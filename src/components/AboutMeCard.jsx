@@ -1,4 +1,3 @@
-import React from 'react';
 
 function AboutMeCard() {
   return (
@@ -7,11 +6,10 @@ function AboutMeCard() {
       <div className="flex flex-col justify-between h-full flex-1">
         {/* Intro Text */}
         <div>
-          <h1 className="font-serif text-[3.8rem] sm:text-[4.8rem] md:text-[5.5rem] text-zinc-900 dark:text-zinc-50 tracking-tight leading-[0.95] mb-2">
-            Hi.
+          <h1 id="about-heading" className="font-serif text-[3.8rem] sm:text-[4.8rem] md:text-[5.5rem] text-zinc-900 dark:text-zinc-50 tracking-tight leading-[0.95] mb-8 md:mb-10">
+            Hi.<br />
+            I'm <span className="italic font-light">Johann.</span>
           </h1>
-          <h1 className="font-serif text-[3.8rem] sm:text-[4.8rem] md:text-[5.5rem] text-zinc-900 dark:text-zinc-50 tracking-tight leading-[0.95] mb-8 md:mb-10">
-            I'm <span className="italic font-light">Johann.</span> </h1>
           <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed md:leading-loose max-w-[460px]">
             A Software Developer who turns complex problems into elegant, high-performance web applications. I've spent close to 9 months at Quadance Technologies developing and optimizing user-centric digital products.
           </p>

@@ -1,26 +1,25 @@
-import React from 'react';
 
 function Experience() {
   const experiences = [
     {
       company: "Quadance Technologies",
       role: "Associate Software Engineer",
-      dateRange: "MAR 2026 - Present",
-      location: "TRIVANDRUM, INDIA",
+      dateRange: "Current",
+      location: "TECHNOPARK PHASE 1, TRIVANDRUM",
       description: (
         <>
-          <strong>Drove design for Oracle Fusion Pricing across 9 products</strong>, from foundational entities to cross-ecosystem work. Designed for <strong>scale</strong>, with lists holding up to a million priced atoms, for <strong>reuse</strong>, with patterns compounding across the suite, and for <strong>collaboration</strong>, across four product teams in three ecosystems. Shipped within Oracle's Redwood design system, <strong>extending it where pricing needed its own conventions</strong>.
+          Currently working with <strong>React, Tailwind, Django, and PostgreSQL</strong>. Collaborating closely with designers using <strong>Figma</strong> to build and deliver responsive user interfaces.
         </>
       )
     },
     {
       company: "Quadance Technologies",
       role: "Project Trainee",
-      dateRange: "OCT 2025 - MAR 2026",
-      location: "TRIVANDRUM, INDIA",
+      dateRange: "OCT 2025 - Present",
+      location: "TECHNOPARK PHASE 1, TRIVANDRUM",
       description: (
         <>
-          <strong>Built a zero-to-one</strong> customer segment analytics dashboard for Oracle Unity (CDP). While the initial brief focused solely on visualizing segments, I transformed these static visualizations into <strong>actionable workflows</strong>. This defined the <strong>foundational product direction</strong> for the analytics vertical, earning an <strong>exclusive full-time return offer</strong>.
+          <strong>Building core competency</strong> in Python development and machine learning fundamentals to support software design and automation tasks. Developing foundational knowledge in <strong>AI model design, data handling, and automation techniques</strong>.
         </>
       )
     },
@@ -28,10 +27,10 @@ function Experience() {
       company: "Nissan Digital LLP",
       role: "Software Developer Intern",
       dateRange: "JUL 2024 - MAR 2025",
-      location: "TRIVANDRUM, INDIA",
+      location: "TECHNOPARK PHASE 3, TRIVANDRUM",
       description: (
         <>
-          <strong>Co-led a 600 person organization</strong> for North East India's largest cultural festival. <strong>Spearheaded the design and delivery</strong> of 13 web portals and a mobile app alongside the engineering team. Demonstrated <strong>extreme operational leadership</strong> by designing and delegating the construction of <strong>life sized physical props</strong> on an impossible timeline.
+          Worked on implementing <strong>Behaviour Driven Development scripts using Java, Selenium, and Cucumber</strong> to perform Regression tests. <strong>Integrated Jenkins with Bitbucket</strong> to streamline code execution, supporting continuous integration workflows. Collaborated on <strong>code reviews and knowledge-sharing sessions</strong>, ensuring adherence to best practices and clean coding standards.
         </>
       )
     }
@@ -54,7 +53,7 @@ function Experience() {
         {experiences.map((exp, idx) => (
           <div 
             key={idx}
-            className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.2)] border border-zinc-100/80 dark:border-zinc-800/40 hover:shadow-[0_25px_50px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_25px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300 ease-out flex flex-col justify-between"
+            className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.35)] border border-zinc-100/50 dark:border-zinc-800/40 flex flex-col justify-between"
           >
             <div>
               {/* Header Info */}

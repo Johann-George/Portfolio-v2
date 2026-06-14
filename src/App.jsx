@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import AboutMe from './components/AboutMe'
+import Projects from './components/Projects'
 import Experience from './components/Experience'
+import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -31,9 +33,15 @@ function App() {
         setDarkMode={setDarkMode} 
       />
       
-      <AboutMe />
-      
-      <Experience />
+      <main className="flex-1">
+        <AboutMe />
+
+        <Experience />
+        
+        <Projects />
+        
+        <Testimonials />
+      </main>
       
       <Footer />
     </div>

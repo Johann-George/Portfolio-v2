@@ -1,11 +1,10 @@
-import React from 'react';
 import portraitImg from '../assets/johann_portrait.png';
 import InteractiveAscii from './InteractiveAscii';
 import AboutMeCard from './AboutMeCard';
 
 function AboutMe() {
   return (
-    <main className="flex-1 flex items-center justify-center px-6 py-6 md:py-16">
+    <section className="w-full flex items-center justify-center px-6 py-6 md:py-16" aria-labelledby="about-heading">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
         {/* Left Column: The Card */}
@@ -26,7 +25,7 @@ function AboutMe() {
         </div>
         
       </div>
-    </main>
+    </section>
   );
 }
 
