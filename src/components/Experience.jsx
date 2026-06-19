@@ -15,7 +15,7 @@ function Experience() {
     {
       company: "Quadance Technologies",
       role: "Project Trainee",
-      dateRange: "OCT 2025 - Present",
+      dateRange: "OCT 2025 - MAR 2026",
       location: "TECHNOPARK PHASE 1, TRIVANDRUM",
       description: (
         <>
