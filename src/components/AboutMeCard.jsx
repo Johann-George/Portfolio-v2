@@ -1,7 +1,15 @@
 
-function AboutMeCard() {
+function AboutMeCard({ showBorderAndShadow = false }) {
+  const borderClasses = showBorderAndShadow 
+    ? "border-zinc-100/50 dark:border-zinc-800/40" 
+    : "border-transparent";
+    
+  const shadowClasses = showBorderAndShadow
+    ? "shadow-[0_20px_50px_rgba(0,0,0,0.03)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)] shadow-[0_30px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.3)]"
+    : "shadow-none";
+
   return (
-    <div className="w-full max-w-xl bg-white dark:bg-zinc-900 rounded-[2.5rem] p-8 md:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.03)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-zinc-100/50 dark:border-zinc-800/40 shadow-[0_30px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.3)] min-h-[500px] flex flex-col justify-between">
+    <div className={`w-full max-w-xl bg-white dark:bg-zinc-900 rounded-[2.5rem] p-8 md:p-14 border ${borderClasses} ${shadowClasses} min-h-[500px] flex flex-col justify-between transition-all duration-[1200ms] ease-in-out`}>
       
       <div className="flex flex-col justify-between h-full flex-1">
         {/* Intro Text */}

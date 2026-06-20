@@ -1,9 +1,14 @@
 import { useRef, useEffect, useState } from 'react';
 
-function InteractiveAscii({ imageSrc }) {
+function InteractiveAscii({ imageSrc, show }) {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 400, height: 400 });
+  const showRef = useRef(show);
+
+  useEffect(() => {
+    showRef.current = show;
+  }, [show]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -26,12 +31,15 @@ function InteractiveAscii({ imageSrc }) {
       active: false
     };
 
+    let lastTime = performance.now();
+    let revealProgress = 0;
+
     // Load the image
     const img = new Image();
     img.src = imageSrc;
     img.onload = () => {
       initParticles();
-      animate();
+      animate(performance.now());
     };
 
     function initParticles() {
@@ -106,9 +114,20 @@ function InteractiveAscii({ imageSrc }) {
       }
     }
 
-    function animate() {
+    function animate(timestamp) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      if (showRef.current) {
+        if (revealProgress < 1) {
+          revealProgress = Math.min(1, revealProgress + dt * 0.85); // Takes ~1.2s to reveal fully
+        }
+      } else {
+        revealProgress = 0;
+      }
+
       const isDark = document.documentElement.classList.contains('dark');
       
       const fontSize = cellWidthVal * 1.35;
@@ -116,7 +135,17 @@ function InteractiveAscii({ imageSrc }) {
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
+      const revealY = revealProgress * displayHeight;
+
       particles.forEach(p => {
+        // If not revealed yet, skip drawing
+        if (p.y > revealY) {
+          return;
+        }
+
+        // Determine if it's in the leading reveal edge (e.g. top 45px of revealed area)
+        const isRevealEdge = revealProgress < 1 && (p.y > revealY - 45);
+
         if (mouse.active && mouse.x !== null && mouse.y !== null) {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
@@ -134,12 +163,18 @@ function InteractiveAscii({ imageSrc }) {
 
         // Determine drawing character
         let drawChar = p.char;
-        if (p.glitchTimer > 0) {
-          drawChar = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+        const isGlitching = (p.glitchTimer > 0) || isRevealEdge;
+
+        if (isGlitching) {
+          if (isRevealEdge && Math.random() < 0.35) {
+            drawChar = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+          } else if (p.glitchTimer > 0) {
+            drawChar = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+          }
         }
 
         // Colors based on glitch state
-        if (p.glitchTimer > 0) {
+        if (isGlitching) {
           ctx.fillStyle = isDark ? 'rgba(74, 222, 128, 0.95)' : 'rgba(21, 128, 61, 0.95)'; // green-400 / green-700
         } else {
           ctx.fillStyle = isDark ? 'rgba(228, 228, 231, 0.85)' : 'rgba(39, 39, 42, 0.85)'; // zinc-200 / zinc-800

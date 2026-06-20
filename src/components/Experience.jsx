@@ -1,4 +1,106 @@
 
+import { useEffect, useRef, useState } from 'react';
+
+function ExperienceCard({ exp, idx }) {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // 1. Initial entry transition (from bottom of viewport)
+      if (rect.top < viewportHeight - 50) {
+        setIsVisible(true);
+      }
+
+      // 2. Flip transition: turn the card as soon as it is fully seen in the viewport (bottom is above viewport bottom)
+      if (rect.bottom < viewportHeight - 20) {
+        setIsFlipped(true);
+      } else {
+        setIsFlipped(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Check initial position on mount
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const number = String(idx + 1).padStart(2, '0');
+
+  return (
+    <div 
+      ref={cardRef}
+      className="perspective-1000 h-[520px] md:h-[480px] w-full transition-all duration-[1000ms] ease-out"
+      style={{
+        transform: isVisible ? 'translateY(0)' : 'translateY(80px)',
+        opacity: isVisible ? 1 : 0,
+        transitionDelay: `${idx * 200}ms`
+      }}
+    >
+      <div 
+        className={`relative w-full h-full transform-style-3d transition-transform duration-700 ease-out ${isFlipped ? 'rotate-y-180' : ''}`}
+        style={{
+          transitionDelay: `${idx * 100}ms`
+        }}
+      >
+        {/* Front Side (Initial Design) - Border is present, shadow is none */}
+        <div className="absolute inset-0 backface-hidden bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 border border-zinc-300 dark:border-zinc-800/40 shadow-none flex flex-col justify-between select-none">
+          {/* Top Right: Light grey large numbers */}
+          <div className="flex justify-end">
+            <span className="font-serif text-[7.5rem] md:text-[8.5rem] font-bold text-zinc-100 dark:text-zinc-800/40 leading-none select-none tracking-tighter">
+              {number}
+            </span>
+          </div>
+          {/* Bottom Left: Company name & Role */}
+          <div className="mt-auto">
+            <h3 className="font-serif text-3xl md:text-4xl text-zinc-900 dark:text-zinc-50 tracking-tight leading-tight">
+              {exp.company}
+            </h3>
+            <p className="text-[10px] md:text-xs font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase mt-3">
+              {exp.role}
+            </p>
+          </div>
+        </div>
+
+        {/* Back Side (Detailed View) - Border is present, shadow appears when turned */}
+        <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 border border-zinc-300 dark:border-zinc-800/40 flex flex-col justify-between transition-shadow duration-500 ${isFlipped ? 'shadow-[0_20px_50px_rgba(0,0,0,0.10)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)]' : 'shadow-none'}`}>
+          <div>
+            {/* Header Info */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 leading-tight">
+                {exp.company}
+              </h3>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1 font-normal">
+                {exp.role}
+              </p>
+              <div className="mt-4 text-[10px] font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase space-y-1">
+                <div>{exp.dateRange}</div>
+                <div>{exp.location}</div>
+              </div>
+            </div>
+
+            <hr className="border-zinc-100 dark:border-zinc-800/80 my-6" />
+
+            {/* Description Body */}
+            <p className="text-sm md:text-[14px] text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed md:leading-loose">
+              {exp.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Experience() {
   const experiences = [
     {
@@ -51,33 +153,7 @@ function Experience() {
       {/* Grid of Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {experiences.map((exp, idx) => (
-          <div 
-            key={idx}
-            className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.35)] border border-zinc-100/50 dark:border-zinc-800/40 flex flex-col justify-between"
-          >
-            <div>
-              {/* Header Info */}
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 leading-tight">
-                  {exp.company}
-                </h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1 font-normal">
-                  {exp.role}
-                </p>
-                <div className="mt-4 text-[10px] font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase space-y-1">
-                  <div>{exp.dateRange}</div>
-                  <div>{exp.location}</div>
-                </div>
-              </div>
-
-              <hr className="border-zinc-100 dark:border-zinc-800/80 my-6" />
-
-              {/* Description Body */}
-              <p className="text-sm md:text-[14.5px] text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed md:leading-loose">
-                {exp.description}
-              </p>
-            </div>
-          </div>
+          <ExperienceCard key={idx} exp={exp} idx={idx} />
         ))}
       </div>
     </section>
