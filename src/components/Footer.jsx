@@ -10,7 +10,7 @@ function Footer() {
       </div>
 
       {/* Divider */}
-      <hr className="border-zinc-200 dark:border-zinc-800/80 mb-10" />
+      <hr className="border-zinc-200 dark:border-zinc-700 mb-10" />
 
       {/* Bottom Content */}
       <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-[15px] font-medium text-zinc-800 dark:text-zinc-200">

@@ -53,7 +53,7 @@ function ExperienceCard({ exp, idx }) {
         }}
       >
         {/* Front Side (Initial Design) - Border is present, shadow is none */}
-        <div className="absolute inset-0 backface-hidden bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 border border-zinc-300 dark:border-zinc-800/40 shadow-none flex flex-col justify-between select-none">
+        <div className="absolute inset-0 backface-hidden bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 border border-zinc-300 dark:border-zinc-700 shadow-none flex flex-col justify-between select-none">
           {/* Top Right: Light grey large numbers */}
           <div className="flex justify-end">
             <span className="font-serif text-[7.5rem] md:text-[8.5rem] font-bold text-zinc-100 dark:text-zinc-800/40 leading-none select-none tracking-tighter">
@@ -72,7 +72,7 @@ function ExperienceCard({ exp, idx }) {
         </div>
 
         {/* Back Side (Detailed View) - Border is present, shadow appears when turned */}
-        <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 border border-zinc-300 dark:border-zinc-800/40 flex flex-col justify-between transition-shadow duration-500 ${isFlipped ? 'shadow-[0_20px_50px_rgba(0,0,0,0.10)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)]' : 'shadow-none'}`}>
+        <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-10 border border-zinc-300 dark:border-zinc-700 flex flex-col justify-between transition-shadow duration-500 ${isFlipped ? 'shadow-[0_20px_50px_rgba(0,0,0,0.10)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)]' : 'shadow-none'}`}>
           <div>
             {/* Header Info */}
             <div className="mb-6">
@@ -88,7 +88,7 @@ function ExperienceCard({ exp, idx }) {
               </div>
             </div>
 
-            <hr className="border-zinc-100 dark:border-zinc-800/80 my-6" />
+            <hr className="border-zinc-100 dark:border-zinc-700 my-6" />
 
             {/* Description Body */}
             <p className="text-sm md:text-[14px] text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed md:leading-loose">

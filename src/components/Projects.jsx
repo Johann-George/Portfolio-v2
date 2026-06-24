@@ -75,7 +75,7 @@ function Projects() {
                 </div>
 
                 {/* Tech & Timeline Section */}
-                <div className="border-t border-zinc-200 dark:border-zinc-800/80 pt-6">
+                <div className="border-t border-zinc-200 dark:border-zinc-700 pt-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <span className="block text-[12px] font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
@@ -111,7 +111,7 @@ function Projects() {
             </div>
           );
 
-          const cardClasses = "block bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-12 shadow-[0_25px_60px_rgba(0,0,0,0.04)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.25)] border border-zinc-100/50 dark:border-zinc-800/40 transition-all duration-300 hover:shadow-[0_30px_70px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_30px_70px_rgba(0,0,0,0.3)] hover:-translate-y-1.5 cursor-pointer";
+          const cardClasses = "block bg-white dark:bg-zinc-900 rounded-[2rem] p-8 md:p-12 shadow-[0_25px_60px_rgba(0,0,0,0.04)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.25)] border border-zinc-100/50 dark:border-zinc-700 transition-all duration-300 hover:shadow-[0_30px_70px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_30px_70px_rgba(0,0,0,0.3)] hover:-translate-y-1.5 cursor-pointer";
 
           if (project.githubUrl) {
             return (

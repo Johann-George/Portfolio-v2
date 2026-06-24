@@ -10,7 +10,7 @@ function Header({ darkMode, setDarkMode }) {
         {/* Theme Toggle Button */}
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="p-2.5 rounded-full border border-zinc-200/60 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 active:scale-95 text-zinc-700 dark:text-zinc-300"
+          className="p-2.5 rounded-full border border-zinc-200/60 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 active:scale-95 text-zinc-700 dark:text-zinc-300"
           title="Toggle theme"
           aria-label="Toggle light and dark mode"
         >
@@ -29,7 +29,7 @@ function Header({ darkMode, setDarkMode }) {
 
         {/* Resume Button */}
         <button
-          className="flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 active:scale-95 group"
+          className="flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full border border-zinc-200/80 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 active:scale-95 group"
         >
           <span>Resume</span>
           <svg 

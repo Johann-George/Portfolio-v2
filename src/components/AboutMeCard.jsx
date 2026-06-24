@@ -1,7 +1,7 @@
 
 function AboutMeCard({ showBorderAndShadow = false }) {
   const borderClasses = showBorderAndShadow 
-    ? "border-zinc-100/50 dark:border-zinc-800/40" 
+    ? "border-zinc-100/50 dark:border-zinc-700" 
     : "border-transparent";
     
   const shadowClasses = showBorderAndShadow
@@ -25,7 +25,7 @@ function AboutMeCard({ showBorderAndShadow = false }) {
 
         {/* Info Grid */}
         <div>
-          <hr className="border-zinc-100 dark:border-zinc-800/80 my-8 md:my-10" />
+          <hr className="border-zinc-100 dark:border-zinc-700 my-8 md:my-10" />
           
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-4">
             <div>

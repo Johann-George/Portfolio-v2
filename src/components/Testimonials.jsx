@@ -38,14 +38,14 @@ function TestimonialCard({ testimonial }) {
       {/* Card Container */}
       <div 
         onAnimationIteration={handleAnimationIteration}
-        className={`relative z-10 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/40 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[380px] md:min-h-[420px] flex flex-col overflow-hidden transition-transform duration-500 ease-out origin-[50%_24px] ${isAnimating ? 'animate-sway' : ''}`}
+        className={`relative z-10 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-700 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[380px] md:min-h-[420px] flex flex-col overflow-hidden transition-transform duration-500 ease-out origin-[50%_24px] ${isAnimating ? 'animate-sway' : ''}`}
       >
         {/* 
           Circular Hole (Fake transparent hole)
           Placed perfectly at top-center. It matches the page background, 
           and has an inner shadow to look like a punched hole.
         */}
-        <div className="absolute top-[12px] left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-zinc-50 dark:bg-zinc-950 shadow-[inset_0_2px_5px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_2px_5px_rgba(0,0,0,0.5)] border border-zinc-200/60 dark:border-zinc-800/80 z-20 flex items-center justify-center overflow-hidden">
+        <div className="absolute top-[12px] left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-zinc-50 dark:bg-zinc-950 shadow-[inset_0_2px_5px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_2px_5px_rgba(0,0,0,0.5)] border border-zinc-200/60 dark:border-zinc-700 z-20 flex items-center justify-center overflow-hidden">
           {/* Rope segment visible INSIDE the hole (behind the card surface) */}
           <div className="w-full h-[8px] bg-gradient-to-b from-slate-300 via-slate-100 to-slate-300 dark:from-zinc-800 dark:via-zinc-600 dark:to-zinc-800" />
         </div>
