@@ -28,7 +28,10 @@ function Header({ darkMode, setDarkMode }) {
         </button>
 
         {/* Resume Button */}
-        <button
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full border border-zinc-200/80 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 active:scale-95 group"
         >
           <span>Resume</span>
@@ -41,7 +44,7 @@ function Header({ darkMode, setDarkMode }) {
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
-        </button>
+        </a>
       </div>
     </header>
   );
